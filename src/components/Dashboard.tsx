@@ -17,6 +17,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
   const [userProfile, setUserProfile] = useState<any>(null)
   const [accessToken, setAccessToken] = useState('')
   const [loading, setLoading] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     loadUserProfile()
@@ -92,46 +93,46 @@ export function Dashboard({ onLogout }: DashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
+      <header className="bg-white shadow sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1>Mentorship Platform</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-gray-600">
+          <h1 className="text-lg sm:text-2xl">Mentorship Platform</h1>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <span className="text-gray-600 text-sm sm:text-base hidden sm:inline">
               {userProfile?.name} ({userProfile?.role})
             </span>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors touch-manipulation"
             >
               <LogOut className="size-4" />
-              Logout
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex gap-4 mb-6 overflow-x-auto">
+      <div className="max-w-7xl mx-auto px-4 py-4 sm:py-8">
+        <div className="flex gap-2 sm:gap-4 mb-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
           {tabs.map((tab) => {
             const Icon = tab.icon
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg whitespace-nowrap transition-colors ${
+                className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg whitespace-nowrap transition-colors touch-manipulation text-sm sm:text-base ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                <Icon className="size-5" />
-                {tab.label}
+                <Icon className="size-4 sm:size-5" />
+                <span className="hidden xs:inline">{tab.label}</span>
               </button>
             )
           })}
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           {activeTab === 'profile' && (
             <Profile 
               userProfile={userProfile} 

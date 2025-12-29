@@ -55,11 +55,11 @@ export function Profile({ userProfile, accessToken, onUpdate }: ProfileProps) {
   if (!editing) {
     return (
       <div>
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <h2>My Profile</h2>
           <button
             onClick={() => setEditing(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors touch-manipulation w-full sm:w-auto"
           >
             Edit Profile
           </button>
