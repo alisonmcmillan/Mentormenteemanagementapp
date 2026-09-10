@@ -473,10 +473,14 @@ Consider adding:
 
 ### Code-Push Updates (Optional)
 
-For instant updates without app store approval, consider:
-- Capacitor Live Updates
-- Ionic Appflow
-- CodePush (Microsoft)
+For instant updates of web assets (JS/CSS/HTML) without a full store review cycle, consider:
+
+- **[Capgo](https://capgo.app)** (`@capgo/capacitor-updater`) — open-source client/backend option with channels, rollback, and it plugs into any CI/CD you already use ([docs](https://capgo.app/docs/))
+- **Ionic Appflow Live Updates** — Ionic’s hosted live-update product (keep if you already use Appflow)
+- **Capacitor Live Updates** (`@capacitor/live-updates`) — Ionic’s plugin path tied to Appflow channels
+- ~~CodePush (Microsoft)~~ — App Center / CodePush was retired; do not start new Capacitor projects on it
+
+Note: OTA only covers the web layer. Native plugin or permission changes still need a store binary.
 
 ### Regular Updates
 
